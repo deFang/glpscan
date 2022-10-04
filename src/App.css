@@ -20,7 +20,7 @@
 }
 
 .head {
-  width: 600px;
+  width: 768px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

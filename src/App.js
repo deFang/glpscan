@@ -23,6 +23,14 @@ const formatAddress = (address) => {
   return address.substr(0, 8) + "..." + address.substr(address.length - 8, 8);
 };
 
+const getSum = (array) => {
+    let sum = 0
+    for (let i = 0; i < array.length; i++) {
+      sum += array[i][2]
+    }
+    return sum
+  }
+
 const getGlpBalance = async (address) => {
   let queryParams = {
     account: address,
@@ -180,7 +188,7 @@ function App() {
                   />
                 </label>
               </div>
-
+              <div style={{paddingBottom:"10%"}}>
               <table
                 style={{
                   width: "100%",
@@ -251,8 +259,33 @@ function App() {
                       </tr>
                     );
                   })}
+                      <tr>
+                        <td
+                          colSpan="2"
+                          style={{
+                            padding: "0.75rem",
+                            borderBottom: "2px solid #dee2e6",
+                            verticalAlign: "top",
+                          }}
+                        >
+                          SUM
+                        </td>
+                        <td
+                          style={{
+                            textAlign: "right",
+                            padding: "0.75rem",
+                            borderBottom: "2px solid #dee2e6",
+                            verticalAlign: "top",
+                          }}
+                        >
+                          ${
+                            toFixed(getSum(accountComposite),2)
+                          }
+                        </td>
+                      </tr>
                 </tbody>
               </table>
+                </div>
             </section>
           )}
         </div>
