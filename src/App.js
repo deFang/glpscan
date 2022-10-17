@@ -15,6 +15,9 @@ const toFixed = (digit, bits = 3) => {
   return Math.round(digit * Math.pow(10, bits)) / Math.pow(10, bits);
 };
 
+// const API = "https://1327-35-77-43-17.jp.ngrok.io";
+const API = "https://65c1-54-219-129-101.ngrok.io";
+
 const formatDecimal = (digit, decimals = 18) => {
   return digit / Math.pow(10, decimals);
 };
@@ -40,8 +43,9 @@ const getGlpBalance = async (address) => {
       "ngrok-skip-browser-warning": true,
     },
   };
+
   let response = await axios.get(
-    "https://839d-35-79-17-63.jp.ngrok.io/get_glp_balance?account=" + address,
+    API + "/get_glp_balance?account=" + address,
     config
   ); // build transaction
   let glpBalance = response.data;
@@ -57,7 +61,7 @@ const getAccountComposite = async (address, detail) => {
   let response;
   if (detail) {
     response = await axios.get(
-      "https://839d-35-79-17-63.jp.ngrok.io/get_account_composite?account=" +
+      API + "/get_account_composite?account=" +
         address +
         "&detail=" +
         detail,
@@ -65,7 +69,7 @@ const getAccountComposite = async (address, detail) => {
     );
   } else {
     response = await axios.get(
-      "https://839d-35-79-17-63.jp.ngrok.io/get_account_composite?account=" +
+      API + "/get_account_composite?account=" +
         address,
       config
     );
